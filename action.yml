@@ -1,0 +1,16 @@
+# action.yml
+name: 'Rsync Deployments'
+description: 'Rsync files from a GitHub repo to a destination server over SSH'
+inputs:
+  RSYNC_OPTIONS:
+    description: 'Rsync-specific options when running the command. Exclusions, deletions, etc'
+    required: true
+  RSYNC_TARGET:
+    description: 'Where to deploy the files on the server'
+    required: true
+  RSYNC_SOURCE:
+    description: 'What files to deploy from the repo (starts at root) **NOTE**: a trailing `/` deploys the _contents_ of the directory instead of the entire directory'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
